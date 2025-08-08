@@ -183,6 +183,50 @@ int main () {
         Exibição dos Resultados
     */
 
+    printf("\t\nComparação das Cartas: \n");
+    if (ttlPopulacaoA > ttlPopulacaoB) {
+            printf("População: Carta 01 Venceu (1)\n");
+    } else {
+            printf("População: Carta 02 Venceu (0)\n");
+    };
+
+    if (areaA > areaB) {
+            printf("Area: Carta 01 Venceu (1)\n");
+    } else {
+            printf("Area: Carta 02 Venceu (0)\n");
+    };
+
+    if (pibA > pibB) {
+            printf("PIB: Carta 01 Venceu (1)\n");
+    } else {
+            printf("PIB: Carta 02 Venceu (0)\n" );
+    };
+
+    
+    if (ttlPontosTuristicosA > ttlPontosTuristicosB) {
+            printf("Pontos Turísticos: Carta 01 Venceu (1)\n");
+    } else {
+            printf("Pontos Turísticos: Carta 02 Venceu (0)\n");
+    };
+    
+    if (densidadePopulacaoA > densidadePopulacaoB) {
+            printf("Densidade Populacional: Carta 02 Venceu (1)\n");
+    } else {
+            printf("Densidade Populacional: Carta 01 Venceu (0)\n");
+    };
+
+    if (pibPerCapitaA > pibPerCapitaB) {
+            printf("PIB per Capita: Carta 01 Venceu (1)\n");
+    } else {
+            printf("PIB per Capita: Carta 02 Venceu (0)\n");
+    };
+
+    if (superPoderA > superPoderB) {
+            printf("Super Poder: Carta 01 Venceu (1)\n");
+    } else {
+            printf("Super Poder: Carta 02 Venceu (0)\n");
+    };
+
     /*
         Usando IF
     */

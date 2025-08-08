@@ -30,7 +30,7 @@ int main () {
     unsigned long int ttlPopulacaoB;
     int ttlPontosTuristicosB;
 
-
+    
 
     /*
         Carta 01 (Digitada)

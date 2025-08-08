@@ -19,28 +19,28 @@ int main () {
     
 
     // Carta 01
-    char estadoA[40], cidadeA[20], codCartaA[4];
-    float areaA, pibA, densidadePopulacaoA, pibPerCapitaA, superPoderA, inversoA;
+    char estadoA[40], cidadeA[100], codCartaA[4];
+    float areaA, pibA, densidadePopulacaoA, pibPerCapitaA, superPoderA;
     unsigned long int ttlPopulacaoA;
     int ttlPontosTuristicosA;
 
     // Carta 02
-    char estadoB[40], cidadeB[20], codCartaB[4];
-    float areaB, pibB, densidadePopulacaoB, pibPerCapitaB, superPoderB, inversoB;
+    char estadoB[40], cidadeB[100], codCartaB[4];
+    float areaB, pibB, densidadePopulacaoB, pibPerCapitaB, superPoderB;
     unsigned long int ttlPopulacaoB;
     int ttlPontosTuristicosB;
-
-    
 
     /*
         Carta 01 (Digitada)
     */
 
     printf("Vamos cadastrar a carta 01!\n\n");
-    strcpy(codCartaA, "A01"); // adiciona o "A01" para o codCarta
+    printf("Digite o Código da Carta (ex: A01): \n");    
+    scanf(" %3s", codCartaA); // %3s para ler até 3 caracteres + null terminator (array de 4)
     
+    while (getchar() != '\n'); 
+
     printf("Digite um Estado Brasileiro: \n");
-    
     fgets(estadoA, sizeof(estadoA), stdin);   
     //fgets: usado para arquivo texto mas serve para entrada de usuario tambem, neste caso para ser possivel gravar estadoAs com espaços entre os nomes, como por exempo "Sao Paulo"
     
@@ -50,33 +50,59 @@ int main () {
     printf("Digite uma cidade do/de: %s.\n", estadoA);
     fgets(cidadeA, sizeof(cidadeA),   stdin); 
     //fgets: usado para arquivo texto mas serve para entrada de usuario tambem, neste caso para ser possivel gravar estados com espaços entre os nomes, como por exempo "Sao Paulo"
-    // scanf(" %s", &cidade);
     cidadeA[strcspn(cidadeA, "\n")] = '\0';
 
     printf("Digite a população da cidade: '%s'.\n", cidadeA);
-    scanf("%d", &ttlPopulacaoA);
-    scanf("%*c"); //limpa o buffer
+    scanf(" %lu", &ttlPopulacaoA);
     
     printf("Digite a área da cidade: '%s'.\n", cidadeA);
     scanf(" %f", &areaA);
-    scanf("%*c");
     
     printf("Digite o PIB da cidade: '%s'.\n", cidadeA);
     scanf(" %f", &pibA);
-    scanf("%*c");
 
     printf("Digite o total de pontos turisticos da cidade: '%s'.\n", cidadeA);
-    scanf("%d", &ttlPontosTuristicosA);
-    scanf("%*c");
+    scanf(" %d", &ttlPontosTuristicosA);
 
-    densidadePopulacaoA = (float) ttlPopulacaoA / areaA;
-    pibPerCapitaA = (pibA * 1000000000) / (float) ttlPopulacaoA;
-
-    inversoA = (1.0f / densidadePopulacaoA);
-
-    superPoderA = (float)(ttlPopulacaoA + ttlPontosTuristicosA) + ( areaA + pibA + pibPerCapitaA + inversoA);
-
+    // Exemplo para densidade e PIB per capita da Carta 1    
+    if (areaA != 0.0f) { 
+        densidadePopulacaoA = (float) ttlPopulacaoA / areaA;    
+    } else {        
+        printf("*Atenção (Carta 1): Área é zero. Densidade Populacional definida como 0.00.\n*");        
+        densidadePopulacaoA = 0.0f;    
+    }    
     
+    if (ttlPopulacaoA != 0UL) {      
+        pibPerCapitaA = (pibA * 1000000000.0f) / (float) ttlPopulacaoA; 
+    } else {        
+        printf("*Atenção (Carta 1): População é zero. PIB per Capita definida como 0.00.\n*");        
+        pibPerCapitaA = 0.0f;    
+    }    
+    // Para o inverso da densidade no Super Poder da Carta 1    
+    float inversoA = 0.0f;    
+    
+    if (densidadePopulacaoA != 0.0f) {        
+        inversoA = 1.0f / densidadePopulacaoA; 
+    } else {        
+        printf("*Atenção (Carta 1): Densidade é zero. Inverso da Densidade definido como 0.00.\n*");    
+    }    
+        
+    superPoderA = (float)(ttlPopulacaoA + ttlPontosTuristicosA) + (areaA + pibA + pibPerCapitaA + inversoA);
+
+    //Exibição da Carta 01
+    printf("\n--- Detalhes da Carta 1 ---\n");    
+    printf("Código: %s\n", codCartaA);    
+    printf("Estado: %s\n", estadoA);       
+    printf("Nome da Cidade: %s\n", cidadeA);    
+    printf("População: %lu\n", ttlPopulacaoA);    
+    printf("Área: %.2f km²\n", areaA);    
+    printf("PIB: %.2f bilhões de reais\n", pibA);    
+    printf("Pontos Turísticos: %d\n", ttlPontosTuristicosA);    
+    printf("Densidade Populacional: %.2f hab/km²\n", densidadePopulacaoA);    
+    printf("PIB per Capita: %.2f Reais\n", pibPerCapitaA);    
+    printf("Super Poder: %.2f\n", superPoderA);    
+    printf("---------------------------\n");
+
     
     
     /*
@@ -84,7 +110,10 @@ int main () {
     */
 
     printf("\n\nLegal, agora vamos cadastrar a Carta 02\n\n");
-    strcpy(codCartaB, "B02");
+    printf("Digite o Código da Carta (ex: B01): ");    
+    scanf(" %3s", codCartaB);
+
+    while (getchar() != '\n'); 
 
     printf("Digite um Estado Brasileiro: \n");
     
@@ -101,7 +130,7 @@ int main () {
     cidadeB[strcspn(cidadeB, "\n")] = '\0';
 
     printf("Digite a população da cidade: '%s'.\n", cidadeB);
-    scanf(" %d", &ttlPopulacaoB);
+    scanf(" %lu", &ttlPopulacaoB);
     
     printf("Digite a área da cidade: '%s'.\n", cidadeB);
     scanf(" %f", &areaB);
@@ -110,12 +139,45 @@ int main () {
     scanf(" %f", &pibB);
 
     printf("Digite o total de pontos turisticos da cidade: '%s'.\n", cidadeB);
-    scanf("%d", &ttlPontosTuristicosB);
+    scanf(" %d", &ttlPontosTuristicosB);
 
-    densidadePopulacaoB = (float) ttlPopulacaoB / areaB;
-    pibPerCapitaB = (pibB * 1000000000) / (float) ttlPopulacaoB;
+    if (areaB != 0.0f) {     
+        densidadePopulacaoB = (float) ttlPopulacaoB / areaB;    
+    } else {        
+        printf("*Atenção (Carta 2): Área é zero. Densidade Populacional definida como 0.00.\n*");        
+        densidadePopulacaoB = 0.0f;    
+    }    
+    
+    if (ttlPopulacaoB != 0UL) {   
+        pibPerCapitaB = (pibB * 1000000000.0f) / (float) ttlPopulacaoB; 
+    } else {        
+        printf("*Atenção (Carta 2): População é zero. PIB per Capita definida como 0.00.\n*");        
+        pibPerCapitaB = 0.0f;    
+    }    
 
-    superPoderB = (float)(ttlPopulacaoB + ttlPontosTuristicosB) + ( areaB + pibB + pibPerCapitaB) + (1.0f / densidadePopulacaoB);
+    float inversoB = 0.0f;    
+    
+    if (densidadePopulacaoB != 0.0f) {        
+        inversoB = 1.0f / densidadePopulacaoB; 
+    } else {        
+        printf("*Atenção (Carta 1): Densidade é zero. Inverso da Densidade definido como 0.00.\n*");    
+    }    
+        
+    superPoderB = (float)(ttlPopulacaoB + ttlPontosTuristicosB) + (areaB + pibB + pibPerCapitaB + inversoB);    
+
+    // Exibição da Carta 02
+    printf("\n--- Detalhes da Carta 1 ---\n");    
+    printf("Código: %s\n", codCartaB);    
+    printf("Estado: %s\n", estadoB);     
+    printf("Nome da Cidade: %s\n", cidadeB);    
+    printf("População: %lu\n", ttlPopulacaoB);    
+    printf("Área: %.2f km²\n", areaB);    
+    printf("PIB: %.2f bilhões de reais\n", pibB);    
+    printf("Pontos Turísticos: %d\n", ttlPontosTuristicosB);    
+    printf("Densidade Populacional: %.2f hab/km²\n", densidadePopulacaoB);    
+    printf("PIB per Capita: %.2f Reais\n", pibPerCapitaB);    
+    printf("Super Poder: %.2f\n", superPoderB);    
+    printf("---------------------------\n");
 
     /*
         Exibição dos Resultados
@@ -126,15 +188,14 @@ int main () {
     */
 
     printf("\tComparando as cartas \t\n");
-    printf("Carta 01: %s (%s), %u\n", cidadeA, estadoA, ttlPopulacaoA);
-    printf("Carta 02: %s (%s), %u\n", cidadeB, estadoB, ttlPopulacaoB);
+    printf("Carta 01 (População): %s (%s), %lu\n", cidadeA, estadoA, ttlPopulacaoA);
+    printf("Carta 02 (População): %s (%s), %lu\n", cidadeB, estadoB, ttlPopulacaoB);
     if (ttlPopulacaoA > ttlPopulacaoB) {
-            printf("Resultado: Carta 01 %s, Venceu !\n", cidadeA);
+            printf("Resultado: Carta 01 (%s - %s), Venceu !\n", cidadeA, estadoA);
     } else {
-            printf("Resultado: Carta 02 %s, Venceu !\n", cidadeB);
+            printf("Resultado: Carta 02 (%s - %s), Venceu !\n", cidadeB, estadoB);
     };
     
-
 
     return 0;
 

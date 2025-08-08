@@ -16,7 +16,7 @@
 
 
 int main () {
-
+    
 
     // Carta 01
     char estadoA[40], cidadeA[20], codCartaA[4];
@@ -30,9 +30,11 @@ int main () {
     unsigned long int ttlPopulacaoB;
     int ttlPontosTuristicosB;
 
+   
     /*
-        Carta 01
+        Carta 01 (Digitada)
     */
+
     printf("Vamos cadastrar a carta 01!\n\n");
     strcpy(codCartaA, "A01"); // adiciona o "A01" para o codCarta
     
@@ -73,9 +75,13 @@ int main () {
 
     superPoderA = (float)(ttlPopulacaoA + ttlPontosTuristicosA) + ( areaA + pibA + pibPerCapitaA + inversoA);
 
+    
+    
+    
     /*
-        Carta 02
+        Carta 02 (Digitada)
     */
+
     printf("\n\nLegal, agora vamos cadastrar a Carta 02\n\n");
     strcpy(codCartaB, "B02");
 
@@ -118,62 +124,15 @@ int main () {
         Usando IF
     */
 
-    // printf("\nComparação das Cartas: \n");
-    // if (ttlPopulacaoA > ttlPopulacaoB) {
-    //         printf("População: Carta 01 Venceu (1)\n");
-    // } else {
-    //         printf("População: Carta 02 Venceu (0)\n");
-    // };
-
-    // if (areaA > areaB) {
-    //         printf("Area: Carta 01 Venceu (1)\n");
-    // } else {
-    //         printf("Area: Carta 02 Venceu (0)\n");
-    // };
-
-    // if (pibA > pibB) {
-    //         printf("PIB: Carta 01 Venceu (1)\n");
-    // } else {
-    //         printf("PIB: Carta 02 Venceu (0)\n" );
-    // };
-
+    printf("\tComparando as cartas \t\n");
+    printf("Carta 01: %s (%s), %u\n", cidadeA, estadoA, ttlPopulacaoA);
+    printf("Carta 02: %s (%s), %u\n", cidadeB, estadoB, ttlPopulacaoB);
+    if (ttlPopulacaoA > ttlPopulacaoB) {
+            printf("Resultado: Carta 01 %s, Venceu !\n", cidadeA);
+    } else {
+            printf("Resultado: Carta 02 %s, Venceu !\n", cidadeB);
+    };
     
-    // if (ttlPontosTuristicosA > ttlPontosTuristicosB) {
-    //         printf("Pontos Turísticos: Carta 01 Venceu (1)\n");
-    // } else {
-    //         printf("Pontos Turísticos: Carta 02 Venceu (0)\n");
-    // };
-    
-    // if (densidadePopulacaoA > densidadePopulacaoB) {
-    //         printf("Densidade Populacional: Carta 01 Venceu (1)\n");
-    // } else {
-    //         printf("Densidade Populacional: Carta 02 Venceu (0)\n");
-    // };
-
-    // if (pibPerCapitaA > pibPerCapitaB) {
-    //         printf("PIB per Capita: Carta 01 Venceu (1)\n");
-    // } else {
-    //         printf("PIB per Capita: Carta 02 Venceu (0)\n");
-    // };
-
-    // if (superPoderA > superPoderB) {
-    //         printf("Super Poder: Carta 01 Venceu (1)\n");
-    // } else {
-    //         printf("Super Poder: Carta 02 Venceu (0)\n");
-    // };
-
-
-    /*
-        Usando ternários
-    */
-    printf("\nComparação das Cartas: \n");
-    printf("População: Carta %s\n", (ttlPopulacaoA > ttlPopulacaoB) ? "01 (1)" : "02 (0)");
-    printf("Área: Carta %s\n", (areaA > areaB) ? "01 (1)" : "02 (0)");
-    printf("PIB: Carta %s\n", (pibA > pibB) ? "01 (1)" : "02 (0)");
-    printf("Pontos Turísticos: Carta %s\n", (ttlPontosTuristicosA > ttlPontosTuristicosB) ? "01 (1)" : "02 (0)");
-    printf("Densidade Populacional: Carta %s\n", (densidadePopulacaoA < densidadePopulacaoB) ? "01 (1)" : "02 (0)");
-    printf("PIB per capita: Carta %s\n", (pibPerCapitaA > pibPerCapitaB) ? "01 (1)" : "02 (0)");
-    printf("Super Poder: Carta %s\n", (superPoderA > superPoderB) ? "01 (1)" : "02 (0)");
 
     return 0;
 

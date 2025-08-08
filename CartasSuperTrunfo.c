@@ -119,5 +119,6 @@ int main () {
             "PIB per Capita: %.2f\n ",
             estado, codCarta, cidade, ttlPopulacao, area, pib, ttlPontosTuristicos, densidadePopulacao, pibPerCapita
     );
+    
 
-}
+} 
